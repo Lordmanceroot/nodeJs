@@ -42,14 +42,12 @@ async function manageAnswer(answer) {
         case 3:
             console.log('Удаление товара по ID\n');
             await deleteProduct();
-            console.log('Товар удален');
             askQuestion();
             break;
 
         case 4:
             console.log('Изменение товара\n');
             await changeProduct();
-            console.log('Товар изменен');
             askQuestion();
             break;
 
