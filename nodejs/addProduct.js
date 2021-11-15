@@ -11,13 +11,25 @@ async function addProduct() {
     let product = await getInput(rl);
     console.log("Введите кол-во товара");
     let count = await getInput(rl);
+
+    while (+count <= 0 || isNaN(+count)) {
+        console.log("Введите число больше 0")
+        count = await getInput(rl)
+    }
+
     console.log("Введите стоимость товара");
     let price = await getInput(rl);
 
+    while (+price <= 0 || isNaN(+price)) {
+        console.log("Введите число больше 0")
+        price = await getInput(rl)
+    }
+
+
     catalog.push({
         product: product,
-        count: count,
-        price: price
+        count: +count,
+        price: +price
     });
     content = [...catalog];
     jsonContent(content);

@@ -9,14 +9,16 @@ let content = file && JSON.parse(file) || [];
 async function deleteProduct() {
     let answer = await getInput(rl);
 
-    if (answer < 0 || answer > content.length) {
+    while (answer < 0 || answer > content.length) {
         console.log("Невозможно удалить то, чего не существует, давай попробуем еще разок?");
-    } else {
-        delete catalog[answer];
+        answer = await getInput(rl);
+    }
+
+        catalog.splice(answer, 1)
         content = [...catalog];
         jsonContent(content);
         console.log('Товар удален');
-    }
+
 }
 
 module.exports = {
